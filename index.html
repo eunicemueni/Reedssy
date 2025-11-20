@@ -15,158 +15,315 @@
 </style>
 </head>
 <body>
-<!-- Horizontal Premium Plans -->
-<div class="max-w-full overflow-x-auto py-10 px-4">
-  <div class="flex gap-6 min-w-max">
-    <!-- Entry Plan -->
-    <div class="plan-card flex-shrink-0 bg-[#3D2C41] p-6 rounded-2xl shadow-2xl text-white w-80 hover:scale-105 transition-transform">
-      <h2 class="text-2xl font-bold mb-2 text-[#D4AF37]">Entry Plan</h2>
-      <p class="text-lg font-semibold mb-4">$19 — Essential Access</p>
-      <ul class="text-gray-300 text-sm mb-6 space-y-2">
-        <li>🌟 Access to essential AI tools for social video creation</li>
-        <li>🎬 Generate videos up to 6 seconds in HD quality</li>
-        <li>🧰 Preloaded templates for viral trends</li>
-        <li>💡 Daily AI suggestions to make your content pop</li>
-        <li>📈 Basic analytics to track engagement</li>
-      </ul>
-      <button class="openPayModal bg-[#D4AF37] hover:bg-[#b8962d] text-[#3D2C41] font-bold py-2 px-6 rounded-xl shadow-md transition"
-        data-plan="entry">Pay Now</button>
-    </div>
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kairah Studio — Plans</title>
+  <style>
+    :root{
+      --k-gold:#D4AF37;
+      --k-mid:#3D2C41;
+      --glass: rgba(255,255,255,0.06);
+      --muted:#9CA3AF;
+      --card-w:320px;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    body{background:linear-gradient(180deg,#0f1724 0%, #0b1220 100%); color:#e6eef7; padding:36px;}
+    .wrap{max-width:1200px;margin:0 auto;}
 
-    <!-- Pro Plan -->
-    <div class="plan-card flex-shrink-0 bg-[#3D2C41] p-6 rounded-2xl shadow-2xl text-white w-80 hover:scale-105 transition-transform">
-      <h2 class="text-2xl font-bold mb-2 text-[#D4AF37]">Pro Plan</h2>
-      <p class="text-lg font-semibold mb-4">$49 — Full Creator Access</p>
-      <ul class="text-gray-300 text-sm mb-6 space-y-2">
-        <li>🚀 Generate videos up to 20 seconds in full HD</li>
-        <li>🖌️ Unlock exclusive AI templates & trending audios</li>
-        <li>⚡ Priority AI rendering for faster results</li>
-        <li>📊 Advanced analytics with insights for growth</li>
-        <li>🎯 Optimize content for TikTok, Instagram, and YouTube Shorts</li>
-      </ul>
-      <button class="openPayModal bg-[#D4AF37] hover:bg-[#b8962d] text-[#3D2C41] font-bold py-2 px-6 rounded-xl shadow-md transition"
-        data-plan="pro">Pay Now</button>
-    </div>
+    /* Horizontal scroller */
+    .plans-row{
+      display:flex;
+      gap:18px;
+      overflow-x:auto;
+      padding:18px 8px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+    }
+    .plan-card{
+      scroll-snap-align:center;
+      flex:0 0 var(--card-w);
+      width:var(--card-w);
+      background:linear-gradient(180deg, rgba(61,44,65,0.95), rgba(53,37,56,0.85));
+      border-radius:20px;
+      padding:22px;
+      box-shadow: 0 10px 30px rgba(9,8,12,0.6);
+      border: 1px solid rgba(212,175,55,0.06);
+      transition: transform .24s ease, box-shadow .24s ease;
+      position:relative;
+    }
+    .plan-card:hover{ transform:translateY(-6px) scale(1.02); box-shadow: 0 18px 50px rgba(0,0,0,0.6); }
 
-    <!-- Diamond Plan -->
-    <div class="plan-card flex-shrink-0 bg-[#3D2C41] p-6 rounded-2xl shadow-2xl text-white w-80 hover:scale-105 transition-transform">
-      <h2 class="text-2xl font-bold mb-2 text-[#D4AF37]">Diamond Plan</h2>
-      <p class="text-lg font-semibold mb-4">$449 — All Access</p>
-      <ul class="text-gray-300 text-sm mb-6 space-y-2">
-        <li>💎 Unlimited video generation with cinematic quality</li>
-        <li>🧠 AI-driven trend predictions for viral content</li>
-        <li>🎨 Exclusive templates & pro-level creative assets</li>
-        <li>📞 24/7 Priority support with personal guidance</li>
-        <li>✨ Early access to new features & updates</li>
-      </ul>
-      <button class="openPayModal bg-[#D4AF37] hover:bg-[#b8962d] text-[#3D2C41] font-bold py-2 px-6 rounded-xl shadow-md transition"
-        data-plan="diamond">Pay Now</button>
-    </div>
+    .plan-flag{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+    .plan-title{ color:var(--k-gold); font-weight:700; font-size:20px; letter-spacing:.2px; }
+    .plan-price{ font-size:18px; margin:6px 0 14px; color:#fff; font-weight:600; }
+    .plan-features{ color:#cbd5e1; font-size:13px; line-height:1.45; margin-bottom:14px; }
+    .plan-features li{ margin:8px 0; list-style:none; padding-left:0; }
 
-    <!-- Lifetime Plan -->
-    <div class="plan-card flex-shrink-0 bg-[#3D2C41] p-6 rounded-2xl shadow-2xl text-white w-80 hover:scale-105 transition-transform">
-      <h2 class="text-2xl font-bold mb-2 text-[#D4AF37]">Lifetime Plan</h2>
-      <p class="text-lg font-semibold mb-4">$999 — Ultimate Creator Access</p>
-      <ul class="text-gray-300 text-sm mb-6 space-y-2">
-        <li>♾️ All Diamond features for life</li>
-        <li>🎥 Generate unlimited viral-ready videos without limits</li>
-        <li>🧬 Exclusive AI-powered content ideas & scripts daily</li>
-        <li>🛡️ Lifetime updates & exclusive premium perks</li>
-        <li>🏆 VIP access to Kairah Masterclass & community</li>
-      </ul>
-      <button class="openPayModal bg-[#D4AF37] hover:bg-[#b8962d] text-[#3D2C41] font-bold py-2 px-6 rounded-xl shadow-md transition"
-        data-plan="lifetime">Pay Now</button>
+    .pay-btn{
+      width:100%;
+      background:var(--k-gold);
+      color:var(--k-mid);
+      border:none;
+      padding:12px 14px;
+      font-weight:700;
+      border-radius:12px;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(212,175,55,0.18);
+    }
+    .pay-btn:active{ transform:translateY(1px); }
+
+    /* Comparison / details panel under cards on wide screens */
+    @media(min-width:1100px){
+      .plans-container{ display:flex; gap:28px; align-items:flex-start; }
+      .plans-row{ max-width:calc(100% - 360px); flex:1; }
+      .details-panel{ width:340px; flex-shrink:0; background:rgba(255,255,255,0.03); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.03);}
+      .details-panel h3{ margin:0 0 8px; color:var(--k-gold); font-size:18px;}
+      .details-panel p{ color:#e6eef7; font-size:14px; line-height:1.45; }
+    }
+
+    /* Modal */
+    #paymentModal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999;
+      background: rgba(2,6,23,0.6);
+    }
+    #paymentModal .card{
+      width:380px; max-width:94%; background:#ffffff; color:#0b1220; border-radius:16px; padding:20px; box-shadow:0 30px 80px rgba(2,6,23,0.6); position:relative;
+    }
+    #paymentModal .close{ position:absolute; right:12px; top:10px; background:transparent; border:none; font-size:22px; cursor:pointer; color:#6b7280; }
+    #paymentModal h3{ color:var(--k-mid); margin:4px 0 6px; }
+    #paymentModal p{ color:#374151; margin:0 0 12px; }
+    .pay-option{ display:flex; gap:8px; align-items:center; justify-content:center; border-radius:10px; padding:10px; margin-bottom:10px; text-decoration:none; color:#fff; font-weight:600; }
+    .pay-paypal{ background:#003087; }
+    .pay-paystack{ background:#2CA58A; }
+    .pay-mpesa{ background:#ff9f00; color:#0b1220; }
+    .stripe-wrapper{ display:flex; justify-content:center; margin-bottom:10px; }
+
+    /* small screens adjustments */
+    @media(max-width:640px){
+      body{ padding:18px; }
+      .plan-card{ width:280px; --card-w:280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--k-gold),#ffd76d);display:flex;align-items:center;justify-content:center;color:var(--k-mid);font-weight:800;font-size:20px;">K</div>
+      <div>
+        <h1 style="margin:0;font-size:18px;color:var(--k-gold)">Kairah Studio</h1>
+        <div style="font-size:13px;color:var(--muted);">AI Video Suite — Better than Veo & Sora. Make the world go crazy.</div>
+      </div>
+    </header>
+
+    <main class="plans-container">
+      <div class="plans-row" role="list">
+        <!-- Entry -->
+        <article class="plan-card" role="listitem" aria-label="Entry Plan">
+          <div class="plan-flag">
+            <div class="plan-title">Entry Plan</div>
+            <div style="margin-left:auto;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;font-weight:700;">$19</div>
+          </div>
+          <div class="plan-price">Starter — Test & Create</div>
+          <ul class="plan-features">
+            <li><strong>6-second cinematic clips:</strong> Generate sharp, high-quality short videos optimized for TikTok & Reels.</li>
+            <li><strong>Viral-ready templates:</strong> Hand-picked templates tuned to current trends so your content starts strong.</li>
+            <li><strong>Beginner UX & Prompt Magic:</strong> Turn basic ideas into finished videos with AI-guided prompts.</li>
+            <li><strong>Quick renders:</strong> Fast processing for instant iteration and A/B testing.</li>
+            <li><strong>Basic analytics:</strong> Essential view & engagement metrics to learn what works.</li>
+          </ul>
+          <button class="pay-btn openPayModal" data-plan="entry">Pay Now</button>
+        </article>
+
+        <!-- Pro -->
+        <article class="plan-card" role="listitem" aria-label="Pro Plan">
+          <div class="plan-flag">
+            <div class="plan-title">Pro Plan</div>
+            <div style="margin-left:auto;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;font-weight:700;">$49</div>
+          </div>
+          <div class="plan-price">Creator — Growth & Speed</div>
+          <ul class="plan-features">
+            <li><strong>Up to 20s full HD videos:</strong> Create longer, story-driven clips with crisp detail.</li>
+            <li><strong>Daily trending templates & audio:</strong> Always be on the cutting edge with daily curated assets.</li>
+            <li><strong>Priority rendering:</strong> Faster queue position so your content drops on time.</li>
+            <li><strong>Advanced analytics:</strong> Deep insights with action-focused suggestions for improving reach.</li>
+            <li><strong>AI Script Refinement (Prompt Magic):</strong> Convert single-line ideas into viral-ready scripts and scene lists.</li>
+          </ul>
+          <button class="pay-btn openPayModal" data-plan="pro">Pay Now</button>
+        </article>
+
+        <!-- Diamond -->
+        <article class="plan-card" role="listitem" aria-label="Diamond Plan">
+          <div class="plan-flag">
+            <div class="plan-title">Diamond Plan</div>
+            <div style="margin-left:auto;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;font-weight:700;">$449</div>
+          </div>
+          <div class="plan-price">Unlimited — Pro Studio</div>
+          <ul class="plan-features">
+            <li><strong>Unlimited cinematic generation:</strong> No caps; render long-form or many short videos at cinema-grade quality.</li>
+            <li><strong>Advanced AI models & betas:</strong> Access experimental models that give superior visuals and motion realism.</li>
+            <li><strong>Viral trend predictions:</strong> AI suggests topics and templates with high virality potential.</li>
+            <li><strong>Exclusive creative assets:</strong> Diamond-only templates, pro sound packs & color grades.</li>
+            <li><strong>24/7 priority support & feature access:</strong> Dedicated help and early access to every new tool.</li>
+          </ul>
+          <button class="pay-btn openPayModal" data-plan="diamond">Pay Now</button>
+        </article>
+
+        <!-- Lifetime -->
+        <article class="plan-card" role="listitem" aria-label="Lifetime Plan">
+          <div class="plan-flag">
+            <div class="plan-title">Lifetime Plan</div>
+            <div style="margin-left:auto;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;font-weight:700;">$999</div>
+          </div>
+          <div class="plan-price">Forever — Ultimate Creator License</div>
+          <ul class="plan-features">
+            <li><strong>All Diamond features for life:</strong> One payment, forever access to everything we build.</li>
+            <li><strong>Unlimited updates & future models:</strong> Every new model & feature added later is yours automatically.</li>
+            <li><strong>Daily AI ideas & masterclass access:</strong> Lifetime prompts, scripts, and VIP masterclasses from Kairah University.</li>
+            <li><strong>VIP status:</strong> Private beta programs, exclusive community, and premium perks.</li>
+            <li><strong>Commercial license:</strong> Use generated content for clients, ads, and monetized channels without extra fees.</li>
+          </ul>
+          <button class="pay-btn openPayModal" data-plan="lifetime">Pay Now</button>
+        </article>
+      </div>
+
+      <!-- Optional right-side details panel (desktop) -->
+      <aside class="details-panel" aria-hidden="true" style="display:none;">
+        <h3>Why Kairah Studio?</h3>
+        <p><strong>Faster results:</strong> Our engine is optimized to render viral-ready assets in record time without sacrificing visual fidelity.</p>
+        <p><strong>Better quality:</strong> Cinematic color grading, motion realism, and audio mastering onboard so raw AI outputs are production-ready.</p>
+        <p><strong>Trend-first:</strong> We feed trending signals into templates so your content lands on the hot FYP faster.</p>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Reusable Payment Modal -->
+  <div id="paymentModal" aria-modal="true" role="dialog">
+    <div class="card" role="document">
+      <button class="close" id="closeModalBtn" aria-label="Close">&times;</button>
+      <h3 id="modalPlanTitle">Choose Payment Method</h3>
+      <p id="modalPlanDesc" style="margin-bottom:12px;color:#374151;font-size:14px;">Secure checkout — choose a payment method below.</p>
+
+      <!-- PayPal -->
+      <a id="paypalBtn" class="pay-option pay-paypal" href="#" target="_blank" rel="noopener">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" alt="" style="height:18px;">
+        <span>Pay with PayPal</span>
+      </a>
+
+      <!-- Stripe -->
+      <div class="stripe-wrapper" id="stripeContainer" aria-hidden="false"></div>
+
+      <!-- Paystack -->
+      <a id="paystackBtn" class="pay-option pay-paystack" href="#" target="_blank" rel="noopener">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Paystack_logo.png" alt="" style="height:18px;">
+        <span>Pay with Paystack</span>
+      </a>
+
+      <!-- M-PESA -->
+      <button id="mpesaBtn" class="pay-option pay-mpesa">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/M-Pesa_Logo.svg" alt="" style="height:18px;">
+        <span>Pay with M-PESA</span>
+      </button>
     </div>
   </div>
-</div>
 
-<!-- Payment Modal (Reusable) -->
-<div id="paymentModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-2xl shadow-2xl w-96 p-6 text-center relative">
-    <button id="closePayModal" class="absolute top-2 right-3 text-gray-500 hover:text-gray-700 text-xl font-bold">&times;</button>
-    <h3 class="text-xl font-semibold text-[#3D2C41] mb-4" id="modalPlanName">Choose Payment Method</h3>
+  <!-- Load Stripe Buy Button SDK once -->
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
-    <a id="paypalLink" target="_blank"
-       class="w-full flex items-center justify-center gap-2 bg-[#003087] hover:bg-[#002060] text-white font-semibold py-2 rounded-lg text-sm transition mb-3">
-       <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" class="h-4" alt="PayPal">
-       <span>Pay with PayPal</span>
-    </a>
+  <script>
+    /* Plan data (detailed descriptions included for modal preview) */
+    const plans = {
+      entry: {
+        title: "Entry Plan — $19",
+        desc: "Starter access: 6s cinematic clips, viral templates, beginner-friendly prompt tools, fast renders and basic analytics.",
+        paypal: "https://www.paypal.com/ncp/payment/2X583XDXBYUPN",
+        stripe: "buy_btn_1SVATkH4iReDKpeMvZw5AKr0",
+        paystack: "https://paystack.shop/pay/ge2324r8fu",
+        mpesa: 19
+      },
+      pro: {
+        title: "Pro Plan — $49",
+        desc: "Creator access: up to 20s HD videos, daily trending templates, priority rendering, advanced analytics, and Prompt Magic.",
+        paypal: "https://www.paypal.com/ncp/payment/DVSZY7GB2QCYW",
+        stripe: "buy_btn_1SVAbIH4iReDKpeM3dbtoiVN",
+        paystack: "https://paystack.shop/pay/uli4nrj8q",
+        mpesa: 49
+      },
+      diamond: {
+        title: "Diamond Plan — $449",
+        desc: "All-access: unlimited cinematic generation, advanced models & betas, viral trend predictions, exclusive templates, 24/7 priority support.",
+        paypal: "https://www.paypal.com/ncp/payment/DVSZY7GB2QCYW",
+        stripe: "buy_btn_1SVApvH4iReDKpeM191MsBAz",
+        paystack: "https://paystack.shop/pay/4u6jdu7eft",
+        mpesa: 449
+      },
+      lifetime: {
+        title: "Lifetime Plan — $999",
+        desc: "Lifetime license: everything Diamond has forever, all future upgrades, VIP masterclasses, private betas and commercial license.",
+        paypal: "https://www.paypal.com/ncp/payment/K4Y9SVNW76XYU",
+        stripe: "buy_btn_1SVAdaH4iReDKpeMZZnaOxr6",
+        paystack: "https://paystack.shop/pay/-cdm6oobkz",
+        mpesa: 999
+      }
+    };
 
-    <div id="stripeContainer" class="mb-3"></div>
+    const modal = document.getElementById('paymentModal');
+    const modalTitle = document.getElementById('modalPlanTitle');
+    const modalDesc = document.getElementById('modalPlanDesc');
+    const paypalBtn = document.getElementById('paypalBtn');
+    const paystackBtn = document.getElementById('paystackBtn');
+    const mpesaBtn = document.getElementById('mpesaBtn');
+    const stripeContainer = document.getElementById('stripeContainer');
+    const closeModalBtn = document.getElementById('closeModalBtn');
 
-    <a id="paystackLink" target="_blank"
-       class="w-full flex items-center justify-center gap-2 bg-[#3DA58A] hover:bg-[#2f8a74] text-white font-semibold py-2 rounded-lg text-sm transition mb-3">
-       <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Paystack_logo.png" class="h-4" alt="Paystack">
-       <span>Pay with Paystack</span>
-    </a>
+    const STRIPE_PUBLISHABLE = "pk_live_51RoZXfH4iReDKpeMdW1C6mtNpEb6dXi2zzQmcO1BSI1j4sWdSkwlD0K2Q4Uu4Go3amDsrzRNYgosya2sp3K7c8nS00D0kNVJDF";
 
-    <button id="mpesaButton"
-      class="w-full flex items-center justify-center gap-2 bg-[#FFA500] hover:bg-[#e69500] text-white font-semibold py-2 rounded-lg text-sm transition">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/M-Pesa_Logo.svg" class="h-4" alt="M-PESA">
-      <span>Pay with M-PESA</span>
-    </button>
-  </div>
-</div>
+    /* Open modal for a plan - inject payment links and stripe button dynamically */
+    function openPaymentModal(planKey){
+      const p = plans[planKey];
+      modalTitle.textContent = p.title;
+      modalDesc.textContent = p.desc;
+      paypalBtn.href = p.paypal;
+      paystackBtn.href = p.paystack;
+      mpesaBtn.onclick = () => alert(`📲 Send Ksh equivalent of $${p.mpesa} to 0113554446 via M-PESA, then confirm on WhatsApp.`);
 
-<script async src="https://js.stripe.com/v3/buy-button.js"></script>
-<script>
-const plans = {
-  entry: {
-    name: "Entry Plan ($19)",
-    paypal: "https://www.paypal.com/ncp/payment/2X583XDXBYUPN",
-    stripe: "buy_btn_1SVATkH4iReDKpeMvZw5AKr0",
-    paystack: "https://paystack.shop/pay/ge2324r8fu",
-    mpesa: 19
-  },
-  pro: {
-    name: "Pro Plan ($49)",
-    paypal: "https://www.paypal.com/ncp/payment/DVSZY7GB2QCYW",
-    stripe: "buy_btn_1SVAbIH4iReDKpeM3dbtoiVN",
-    paystack: "https://paystack.shop/pay/uli4nrj8q",
-    mpesa: 49
-  },
-  diamond: {
-    name: "Diamond Plan ($449)",
-    paypal: "https://www.paypal.com/ncp/payment/DVSZY7GB2QCYW",
-    stripe: "buy_btn_1SVApvH4iReDKpeM191MsBAz",
-    paystack: "https://paystack.shop/pay/4u6jdu7eft",
-    mpesa: 449
-  },
-  lifetime: {
-    name: "Lifetime Plan ($999)",
-    paypal: "https://www.paypal.com/ncp/payment/K4Y9SVNW76XYU",
-    stripe: "buy_btn_1SVAdaH4iReDKpeMZZnaOxr6",
-    paystack: "https://paystack.shop/pay/-cdm6oobkz",
-    mpesa: 999
-  }
-};
+      // create/replace stripe buy button
+      stripeContainer.innerHTML = '';
+      const stripeElement = document.createElement('stripe-buy-button');
+      stripeElement.setAttribute('buy-button-id', p.stripe);
+      stripeElement.setAttribute('publishable-key', STRIPE_PUBLISHABLE);
+      stripeContainer.appendChild(stripeElement);
 
-const modal = document.getElementById("paymentModal");
-const paypalLink = document.getElementById("paypalLink");
-const paystackLink = document.getElementById("paystackLink");
-const mpesaButton = document.getElementById("mpesaButton");
-const stripeContainer = document.getElementById("stripeContainer");
-const modalPlanName = document.getElementById("modalPlanName");
+      // show modal
+      modal.style.display = 'flex';
+      // trap focus lightly (optional)
+      setTimeout(()=> closeModalBtn.focus(), 150);
+    }
 
-document.querySelectorAll(".openPayModal").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const planKey = btn.dataset.plan;
-    const plan = plans[planKey];
-    modalPlanName.textContent = plan.name;
-    paypalLink.href = plan.paypal;
-    paystackLink.href = plan.paystack;
-    mpesaButton.onclick = () => alert(`📲 Send Ksh equivalent of $${plan.mpesa} to 0113554446 via M-PESA, then confirm on WhatsApp.`);
+    // Attach plan openers
+    document.querySelectorAll('.openPayModal').forEach(btn=>{
+      btn.addEventListener('click', () => {
+        const plan = btn.dataset.plan;
+        openPaymentModal(plan);
+      });
+    });
 
-    stripeContainer.innerHTML = '';
-    const stripeBtn = document.createElement('stripe-buy-button');
-    stripeBtn.setAttribute('buy-button-id', plan.stripe);
-    stripeBtn.setAttribute('publishable-key', 'pk_live_51RoZXfH4iReDKpeMdW1C6mtNpEb6dXi2zzQmcO1BSI1j4sWdSkwlD0K2Q4Uu4Go3amDsrzRNYgosya2sp3K7c8nS00D0kNVJDF');
-    stripeContainer.appendChild(stripeBtn);
+    // Close handlers
+    closeModalBtn.addEventListener('click', ()=> modal.style.display = 'none');
+    modal.addEventListener('click', e => { if(e.target === modal) modal.style.display = 'none'; });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') modal.style.display = 'none'; });
 
-    modal.classList.remove("hidden");
-  });
-});
-
-document.getElementById("closePayModal").addEventListener("click", () => modal.classList.add("hidden"));
-modal.addEventListener("click", e => { if (e.target === modal) modal.classList.add("hidden"); });
-</script>
+    // Optional: keyboard horizontal nav (left/right) for scroller
+    (function keyboardScroller(){
+      const sc = document.querySelector('.plans-row');
+      if(!sc) return;
+      document.addEventListener('keydown', e=>{
+        if(e.key==='ArrowRight'){ sc.scrollBy({left: 360, behavior:'smooth'}); }
+        if(e.key==='ArrowLeft'){ sc.scrollBy({left: -360, behavior:'smooth'}); }
+      });
+    })();
+  </script>
+</body>
+</html>
